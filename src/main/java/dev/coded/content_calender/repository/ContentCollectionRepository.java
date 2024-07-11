@@ -55,4 +55,7 @@ public class ContentRepository {
     public void delete(Integer id) {
         contentList.removeIf(c-> c.id().equals(id));
     }
+
+    public void deleteById(Integer id) {
+    }
 }
