@@ -1,10 +1,14 @@
 package dev.coded.content_calender.repository;
 
 import dev.coded.content_calender.model.Content;
+import dev.coded.content_calender.model.Status;
+import dev.coded.content_calender.model.Type;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
@@ -17,14 +21,14 @@ public class ContentJdbcTemplateRepository {
     }
 
     private static Content mapRow(ResultSet rs, int rowNum) throws SQLException {
-        return new Content(rs.getInt(columnLabel: "id"),
-                rs.getString( columnLabel: "title"),
-                rs.getString( columnLabel: "desc"),
-                rs.getString( columnLabel: "status"),
-                rs.getString( columnLabel: "content_type"),
-                rs.getTimestamp( columnLabel: "date_created"),
-                rs.getTimestamp( columnLabel: "date_updated"),
-                rs.getString( columnLabel: "url"));
+        return new Content(rs.getInt("id"),
+                rs.getString("title"),
+                rs.getString("desc"),
+                Status.valueOf(rs.getString("status")),
+                Type.valueOf(rs.getString("content_type")),
+                rs.getObject("date_created", LocalDateTime.class),
+                rs.getObject("date_updated",LocalDateTime.class),
+                rs.getString("url"));
     }
 
 
@@ -54,7 +58,7 @@ public class ContentJdbcTemplateRepository {
 
     public Content getContent(int id) {
         String sql = "SELECT * FROM content WHERE id=?";
-        Content content = jdbcTemplate.queryForObject(sql. new Object[]{id},
+        Content content = jdbcTemplate.queryForObject(sql, new Object[]{id},
                 ContentJdbcTemplateRepository::mapRow);
         return content;
     }

@@ -12,10 +12,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class ContentRepository {
+public class ContentCollectionRepository {
     private final List<Content> contentList = new ArrayList<>();
 
-    public ContentRepository() {
+    public ContentCollectionRepository() {
 
     }
     public List<Content> findAll() {
