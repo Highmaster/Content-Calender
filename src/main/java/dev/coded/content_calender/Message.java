@@ -4,19 +4,19 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Message {
-    String k ="kettle";
+    String k ="keyword";
 
    public String getMessage() {
-       return " Hello World!";
+       return " Spirit of the deep!";
    }
 
 
     public String myMessage() {
         getMessage();
-        sendMessage("Tom");
-        return " Money!";
+        sendMessage("Ann");
+        return " The Best Software Engineer!";
     }
     public String sendMessage(String towncrier) {
-        return " Tomorrow!";
+        return " The Future is Now!";
     }
 }
