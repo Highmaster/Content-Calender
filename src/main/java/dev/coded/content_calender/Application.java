@@ -1,11 +1,12 @@
 package dev.coded.content_calender;
 
+import dev.coded.content_calender.config.ContentCalendarProperties;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
-import java.util.Arrays;
 
+@EnableConfigurationProperties(ContentCalendarProperties.class)
 @SpringBootApplication
 public class Application {
 
@@ -13,5 +14,7 @@ public class Application {
 		 SpringApplication.run(Application.class, args);
 
 	}
-
 }
+
+
+
