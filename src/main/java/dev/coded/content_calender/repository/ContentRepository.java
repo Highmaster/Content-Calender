@@ -14,7 +14,7 @@ public interface ContentRepository extends ListCrudRepository<Content, Integer> 
 
     @Query("""
           SELECT * FROM Content
-          where status = 
+          where status = :status
     """)
     List<Content> listByStatus(@Param("status") Status status);
 }
